@@ -3,6 +3,8 @@ import { AuthContext } from '../context/AuthContext';
 import { LogOut, Star, KeyRound, X } from 'lucide-react';
 import axios from 'axios';
 
+const API = import.meta.env.VITE_API_URL;
+
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
@@ -34,7 +36,7 @@ const Navbar = () => {
     }
 
     try {
-      await axios.put('http://localhost:5000/api/auth/password', { newPassword }, {
+      await axios.put(`${API}/auth/password`, { newPassword }, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       setPwMsg({ text: 'Password updated successfully!', isError: false });

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import { Store, Star, Users, ChevronUp, ChevronDown } from 'lucide-react';
 
-const API = 'http://localhost:5000/api';
+const API = import.meta.env.VITE_API_URL;
 
 const StoreOwnerDashboard = () => {
   const { user } = useContext(AuthContext);
